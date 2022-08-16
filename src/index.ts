@@ -11,7 +11,7 @@ class index implements IpaginaHtml{
       controlador!:controladorContato
       repositorioContato!:Irepositorio<Contato>
       botaoVizualizarContatos!:HTMLButtonElement
-      tbody!:HTMLTableElement
+      main!:HTMLElement
       
 
       constructor(){
@@ -25,13 +25,14 @@ class index implements IpaginaHtml{
         this.botaoVizualizarContatos=<HTMLButtonElement>document.getElementById("mostrarContato");
         this.repositorioContato=new RepositorioContatoLocasStorage();        
         this.controlador=new controladorContato(this.repositorioContato)
-        this.tbody=<HTMLTableElement>document.getElementById("tbody")
+        this.main=<HTMLElement>document.querySelector(".main");
     }
      
     inserir():void{
        this.botaoContato.addEventListener("click",()=>{        
        this.controlador.inserir();
-       console.log("Teste");
+       this.vizualizarContatos()
+       
        })
     }
 
@@ -39,31 +40,27 @@ class index implements IpaginaHtml{
         this.botaoVizualizarContatos.addEventListener("click",()=>{
             let contatos:Contato[]=this.controlador.selecionarTodos();
             let html:string="";
-            html+=`
-            <thead >
-            <tr>
-              <th scope="col">N.</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Email</th>
-              <th scope="col">Telefone</th>               
-            </tr>
-             </thead>
-            `
-       contatos.forEach(element => {
-             html+= `
-            
-           <tbody >
-             <tr>
-               <td>${element.id}</td>
-               <td>${element.Nome}</td>
-               <td>${element.Email}</td>
-               <td>${element.Telefone}</td>
-               
-             </tr>                          
-           </tbody>
-               `
+            contatos.forEach(element => {
+                  html+=`
+            <div class="cards">
+                  <h3>
+                     ${element.Nome}                
+                  </h3>
+                 <p>${element.Email}</p>
+                 <p>${element.Telefone}</p>
+                 <div class="bottom-card">
+                     <button class="btn-card" id="btnEditar">
+                       <i class='bx bx-edit'></i>
+                     </button>
+                     <button  class="btn-card" id="btnExcluir">
+                       <i class='bx bx-message-square-x' ></i>
+                     </button>
+                 </div>
+              </div>     `   
+                         
             });
-            this.tbody.innerHTML=html;
+            this.main.innerHTML=html;
+           
         })
        
     }
