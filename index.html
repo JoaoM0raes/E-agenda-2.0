@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="/css/index.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+<body class="body">
+     <aside class="side">
+          <nav class="main-nav">
+             
+            <div class="top-menu">
+              <div class="logo">
+                  
+              </div>             
+               <a href="" class="nav-btn">
+                   E-agenda
+               </a>             
+            </div>
+            <div class="mid-menu">
+              <li class="list-item">              
+                <i class='bx bx-add-to-queue'></i>
+                <a  href="" class="nav-btn" data-bs-toggle="modal" data-bs-target="#InserirContato">
+                  Adicionar Contato
+                </a>
+              </li>
+              <li class="list-item">                
+                <i class='bx bx-add-to-queue'></i>
+                <a href="#" class="nav-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Adicionar Tarefas
+                </a>
+              </li>
+              <li class="list-item">                
+                <i class='bx bx-file-find'></i>
+                <p href="" class="nav-btn">
+                  Vizualizar Tarefas
+                </p>
+              </li>
+              <li class="list-item">                
+                <i class='bx bx-file-find'></i>
+                <p id="mostrarContato">    
+                    Vizualizar Contato    
+                </p>               
+              </li>
+            </div>
+            <div class="bottom-menu">
+              <i class='bx bxl-github' ></i> 
+               <a href="">Git Hub</a>
+            </div>
+            
+          </nav>
+     </aside>
+     <main class="main">
+         <div class="main-container">
+          <table id="tbody" class="table table-hover ">
+            <thead >
+              <tr>
+                <th scope="col">N.</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Data-Criação</th>
+                <th scope="col">Data-Conclusão</th>
+                <th scope="col">Porcentual Concluido</th>
+                <th scope="col">Prioridade</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr>
+                <td >1</td>
+                <td>Alugar casa</td>
+                <td>10-02-2002</td>
+                <td>10-03-2003</td>
+                <td>50%</td>
+                <td>Alta</td>
+              </tr>                          
+            </tbody>
+          </table>
+         
+         </div>         
+     </main>
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header text-center">
+             <h4 class="modal-title w-100 font-weight-bold">Inserindo Tarefa</h4>
+          
+           </div>
+           <div class="modal-body mx-3">
+             <div class="md-form mb-5">
+               <i class="fas fa-user prefix grey-text"></i>
+               <label data-error="wrong" data-success="right" for="form3">Titulo</label>
+               <input type="text" id="form3" class="form-control validate">             
+             </div>  
+             <div class="md-form mb-5">
+               <i class="fas fa-envelope prefix grey-text"></i>
+               <label data-error="wrong" data-success="right" for="form2">Data-Criação</label>
+               <input type="date" id="form2" class="form-control validate">              
+             </div>
+             <div class="md-form mb-5">
+               <i class="fas fa-envelope prefix grey-text"></i>
+               <label data-error="wrong" data-success="right" for="form2">Data-Conclusão</label>
+               <input type="date" id="form2" class="form-control validate">              
+             </div>
+             <select class="form-select mb-5" aria-label="Default select example">
+               <option selected>Prioridade</option>
+               <option value="1">Alta</option>
+               <option value="2">Média</option>
+               <option value="3">Baixa</option>
+             </select>              
+             <div class="input-group mb-3">
+               <input type="text" class="form-control" placeholder="Adicionar Item"" aria-label="Adicionar Item" aria-describedby="button-addon2">
+               <button class="btn btn-outline-secondary" type="button" id="button-addon2">Adicionar</button>
+             </div> 
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button id="btnTarefa" class="btn btn-indigo">Enviar<i class="fas fa-paper-plane-o ml-1"></i></button>
+          </div>          
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="InserirContato" tabindex="-1" aria-labelledby="InserirContato" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Inserindo Contato</h4>
+         
+          </div>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <i class="fas fa-user prefix grey-text"></i>
+              <label data-error="wrong" data-success="right" for="form3">Nome</label>
+              <input type="text" id="contatoNome" class="form-control validate">             
+            </div>  
+            <div class="md-form mb-5">
+              <i class="fas fa-user prefix grey-text"></i>
+              <label data-error="wrong" data-success="right" for="form3">Email</label>
+              <input type="text" id="contatoEmail" class="form-control validate">             
+            </div>
+            <div class="md-form mb-5">
+              <i class="fas fa-user prefix grey-text"></i>
+              <label data-error="wrong" data-success="right" for="form3">Telefone</label>
+              <input  type="text" id="contatoTelefone" class="form-control validate ">             
+            </div>
+            
+         </div>
+        
+         
+         <div class="modal-footer d-flex justify-content-center">
+           <button id="btnContato" class="btn btn-indigo">Enviar<i class="fas fa-paper-plane-o ml-1"></i></button>
+         </div>
+         
+       </div>
+     </div>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script type="module" src="/dist/index.js"></script>        
+    <!-- JavaScript Bundle with Popper -->
+
+</body>
+</html>
