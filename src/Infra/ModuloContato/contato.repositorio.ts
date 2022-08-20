@@ -6,7 +6,7 @@ export class RepositorioContatoLocasStorage implements Irepositorio<Contato>, Ir
 
     private readonly localStorage:Storage
 
-    private readonly contatos: Contato[];
+    private  contatos: Contato[];
 
     constructor(){
         this.localStorage= window.localStorage
@@ -17,20 +17,26 @@ export class RepositorioContatoLocasStorage implements Irepositorio<Contato>, Ir
 
         this.localStorage.setItem("contatos",contatosJson)
     }
-
-
     inserir(registro: Contato): void {
         this.contatos.push(registro);
         this.gravar();
     }
     editar(registro: Contato): void {
-        throw new Error("Method not implemented.");
+       const contatoSelecionado =  this.contatos.findIndex(x=>x.id===registro.id)
+
+       this.contatos[contatoSelecionado]=registro;   
+
+       this.gravar();
     }
-    excluir(registro: Contato): void {
-        throw new Error("Method not implemented.");
+       
+    excluir(id:string | null): void {
+        this.contatos=this.contatos.filter(x=>x.id!==id)
+
+        this.gravar();
     }
-    selecionarId(registro: Contato): Contato {
-        throw new Error("Method not implemented.");
+    selecionarId(id:string): Contato | undefined {
+       return this.contatos.find(x=>x.id === id)
+
     }
     selecionarTodos(): Contato[] {
         const dados = this.localStorage.getItem("contatos")

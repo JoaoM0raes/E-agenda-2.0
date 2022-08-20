@@ -12,13 +12,16 @@ export class RepositorioContatoLocasStorage {
         this.gravar();
     }
     editar(registro) {
-        throw new Error("Method not implemented.");
+        const contatoSelecionado = this.contatos.findIndex(x => x.id === registro.id);
+        this.contatos[contatoSelecionado] = registro;
+        this.gravar();
     }
-    excluir(registro) {
-        throw new Error("Method not implemented.");
+    excluir(id) {
+        this.contatos = this.contatos.filter(x => x.id !== id);
+        this.gravar();
     }
-    selecionarId(registro) {
-        throw new Error("Method not implemented.");
+    selecionarId(id) {
+        return this.contatos.find(x => x.id === id);
     }
     selecionarTodos() {
         const dados = this.localStorage.getItem("contatos");
